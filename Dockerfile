@@ -3,8 +3,6 @@ FROM node:17.1.0
 WORKDIR /app/medusa
 
 COPY package.json .
-COPY develop.sh .
-COPY yarn.* .
 
 RUN apt-get update
 
@@ -14,8 +12,8 @@ RUN npm install -g npm@latest
 
 RUN npm install -g @medusajs/medusa-cli@latest
 
-RUN npm install
+RUN npm install --loglevel=error
 
 COPY . .
 
-ENTRYPOINT ["./develop.sh"]
+ENTRYPOINT ["./develop.sh", "develop"]
