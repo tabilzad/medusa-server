@@ -2,7 +2,7 @@ FROM node:17.1.0
 
 WORKDIR /app/medusa
 
-COPY ../package.json .
+COPY . .
 
 RUN apt-get update
 
@@ -16,6 +16,5 @@ RUN npm install --loglevel=error
 
 RUN npm run build
 
-COPY . .
 
 ENTRYPOINT ["./develop.sh", "develop"]
