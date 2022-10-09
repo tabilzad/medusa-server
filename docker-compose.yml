@@ -4,7 +4,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    image: backend:test
+    image: tabilzad/medusa-server:test
     container_name: medusa-server
     depends_on:
       - postgres
@@ -36,18 +36,17 @@ services:
     build:
       context: ./admin
       dockerfile: Dockerfile
-    image: admin:test
+    image: tabilzad/medusa-admin:latest
     depends_on:
       - backend
     container_name: medusa-admin
     environment:
       NODE_OPTIONS: --openssl-legacy-provider
-
   storefront:
     build:
       context: ./storefront
       dockerfile: Dockerfile
-    image: storefront:test
+    image: tabilzad/medusa-storefront:test
     container_name: medusa-storefront
     depends_on:
       - backend
